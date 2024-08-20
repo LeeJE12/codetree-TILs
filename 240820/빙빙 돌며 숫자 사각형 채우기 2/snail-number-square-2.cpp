@@ -2,7 +2,7 @@
 using namespace std;
 
 // D, R, U, L
-int dx[4] = {-1, 0, 1, 0};
+int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
 
 int n,m;
@@ -21,16 +21,17 @@ int main() {
     for (int i=2; i<=max; i++) {
         int nx = x + dx[dir], ny = y + dy[dir];
 
-        if(InRange(nx, ny) && (arr[nx][ny]!=0)) {
-            x = nx; y = ny;
-        } else {
+        if(!InRange(nx, ny) || (arr[nx][ny]!=0)) {
             dir = (dir+1)%4;
             i--;
+        } else {
+            x = nx; y = ny;
+            arr[x][y]=i;
         }
     }
 
-    for(int i=1; i<n; i++) {
-        for (int j=1; j<m; j++) {
+    for(int i=1; i<=n; i++) {
+        for (int j=1; j<=m; j++) {
             cout << arr[i][j] << " ";
         }
         cout << endl;
