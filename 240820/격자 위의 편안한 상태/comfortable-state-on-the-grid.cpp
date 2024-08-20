@@ -6,7 +6,7 @@ int dr[4]={-1, 0, 1, 0};
 int dc[4]={0, 1, 0, -1};
 
 int N, M, r, c;
-int arr[100][100]={};
+int arr[101][101]={};
 
 bool InRange(int r, int c) {
     return (1<=r && r<=N && 1<=c && c<=N);
