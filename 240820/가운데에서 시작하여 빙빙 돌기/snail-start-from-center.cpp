@@ -5,7 +5,7 @@ using namespace std;
 int dx[4] = {0, -1, 0, 1};
 int dy[4] = {1, 0, -1, 0};
 
-int n, dir=0;
+int n, dir=2;
 int arr[101][101];
 
 bool InRange(int x, int y) {
@@ -14,23 +14,24 @@ bool InRange(int x, int y) {
 
 int main() {
     cin >> n;
-    int x = (n/2)+1, y = x;
+    //int x = (n/2)+1, y = x;
+    int x=n, y=n;
     int max = n*n;
 
     //cout << "x: " << x << ", y: " << y << endl;
 
-    arr[x][y] = 1;
-    for (int i=2; i<=max; i++) {
+    arr[x][y] = max;
+    while(max>1) {
+        max--;
         int nx= x+dx[dir], ny= y+dy[dir];
 
         if (!InRange(nx, ny) || (arr[nx][ny]!=0)) {
-            dir = (dir+1)%4;
-            i--;
+            dir = (dir+3)%4;
+            max++;
         } else {
             x = nx; y = ny;
-            arr[x][y] = i;
+            arr[x][y] = max;
         }
-        
     }
 
     for (int i=1; i<=n; i++) {
