@@ -5,26 +5,12 @@ using namespace std;
 int dx[4]={-1, 0, 1, 0};
 int dy[4]={0, 1, 0, -1};
 
-int N, K, x=1, y=1;
-int dir, cnt=0;
+int N, K;
+int x=1, y=0, dir=1, cnt=0;
 char arr[1001][1001];
 
 bool InRange(int x, int y) {
     return (1<=x && x<=N && 1<=y && y<=N);
-}
-
-void Kdirection (int K, int N) {
-    int k = K/N -1;
-
-    if (k==0) {
-        dir = 2;
-    } else if (k==1) {
-        dir = 3;
-    } else if (k==2) {
-        dir = 0;
-    } else {
-        dir = 1;
-    }
 }
 
 int main() {
@@ -36,61 +22,49 @@ int main() {
             cin >> arr[i][j];
         }
     }
-/*
-    for (int i=1; i<=N; i++) {
-        for (int j=1; j<=N; j++) {
-            cout << arr[i][j] << " ";
-        }
-        cout << endl;
-    }
-*/
-    cin >> K;
-    //Kdirection(K, N);
 
-    int sx=1, sy=0, sdir=1;
+    cin >> K;
+
     while(K>0) {
         K--;
-        int r = sx + dx[sdir]; int c = sy + dy[sdir];
+        int r = x + dx[dir]; int c = y + dy[dir];
         if(InRange(r, c)) {
-            sx=r; sy=c;
+            x=r; y=c;
         } else {
-            sdir = (sdir+1)%4;
+            dir = (dir+1)%4;
         }
-
-        //cout << "sx : " << sx << " sy : " << sy << endl ;
     }
 
-    sdir = (sdir+1)%4;
+    dir = (dir+1)%4;
 
     while (max>0) {
         max--;
         
-        if(arr[sx][sy]=='/') {
-            if (sdir == 0) {
-                sdir = 1;
-            } else if (sdir == 1) {
-                sdir = 0;
-            } else if (sdir == 2) {
-                sdir = 3;
+        if(arr[x][y]=='/') {
+            if (dir == 0) {
+                dir = 1;
+            } else if (dir == 1) {
+                dir = 0;
+            } else if (dir == 2) {
+                dir = 3;
             } else {
-                sdir = 2;
+                dir = 2;
             }
         } else {
-            if (sdir == 0) {
-                sdir = 3;
-            } else if (sdir == 1) {
-                sdir = 2;
-            } else if (sdir == 2) {
-                sdir = 1;
+            if (dir == 0) {
+                dir = 3;
+            } else if (dir == 1) {
+                dir = 2;
+            } else if (dir == 2) {
+                dir = 1;
             } else {
-                sdir = 0;
+                dir = 0;
             }
         }
         
-        if (InRange(sx, sy)) {
+        if (InRange(x, y)) {
             cnt++;
-            sx += dx[sdir]; sy += dy[sdir];
-            //cout << "cnt: " << cnt << " 좌표: (" << sx << ", " << sy << ")" << endl;
+            x += dx[dir]; y += dy[dir];
         } else {
             cout << cnt;
             return 0;
