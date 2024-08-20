@@ -18,7 +18,7 @@ int main() {
     int max = n*m;
 
     arr[1][1] = 65;
-    for (int i=2; i<=max; i++) {
+    for (int i=1; i<max; i++) {
         int nx = x + dx[dir], ny = y + dy[dir];
 
         if(!InRange(nx, ny) || (arr[nx][ny]!=0)) {
@@ -26,7 +26,7 @@ int main() {
             i--;
         } else {
             x = nx; y = ny;
-            arr[x][y]=64+(i%26);
+            arr[x][y]=65+(i%26);
         }
     }
 
