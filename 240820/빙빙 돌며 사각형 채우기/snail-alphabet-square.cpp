@@ -26,7 +26,7 @@ int main() {
             i--;
         } else {
             x = nx; y = ny;
-            arr[x][y]=64+(i%64);
+            arr[x][y]=64+(i%26);
         }
     }
 
