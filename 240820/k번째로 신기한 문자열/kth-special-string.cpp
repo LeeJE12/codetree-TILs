@@ -13,27 +13,29 @@ int main() {
 
     string word[n]={};
 
-    int cnt = 1;
+    int cnt = 0;
     for (int i=0; i<n; i++) {
         string str;
+        bool f = true;
         cin >> str;
         for(int j=0; j<len; j++) {
             if (T[j] == str[j]) {
                 continue;
             } else {
-                cnt--;
+                f = false;
                 break;
             }
         }
 
-        word[cnt] = str;
-        cnt++;
+        if (f) {
+            word[cnt] = str;
+            cnt++;
+        }
     }
-    
+
     sort(word, word+cnt);
 
-
-    cout << word[k];
+    cout << word[k-1];
 
     return 0;
 }
