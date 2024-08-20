@@ -30,7 +30,6 @@ bool Peace(int r, int c) {
 
 int main() {
     cin >> N >> M;
-    int cnt[M]={};
 
     while(M>0) {
         M--;
@@ -40,17 +39,11 @@ int main() {
             arr[r][c] = 1;
 
             if (Peace(r, c)) {
-                cnt[M] = 1;
-                cout << cnt[M] << endl;
+                cout << 1 << endl;
             } else {
-                cnt[M] = 0;
-                cout << cnt[M] << endl;
+                cout << 0 << endl;
             }
         }        
-    }
-
-    for (int i=0; i<M; i++) {
-        cout << cnt[i] << endl;
     }
 
 
