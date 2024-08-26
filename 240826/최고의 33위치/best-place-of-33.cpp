@@ -39,6 +39,6 @@ int main() {
         }
     }
 
-    cout << c;
+    cout << max;
     return 0;
 }
