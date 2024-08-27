@@ -19,6 +19,7 @@ int row (int n) {
                 num ++;
                 //cout << "row count : " << num << " i : " << i << endl;
                 cnt = 1;
+                break;
             }
         }
     }
@@ -40,6 +41,7 @@ int column(int n) {
                 num ++;
                 //cout << "column count : " << num << " i : " << i << endl;
                 cnt = 1;
+                break;
             }
         }
     }
