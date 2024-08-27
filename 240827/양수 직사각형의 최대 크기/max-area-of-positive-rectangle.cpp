@@ -36,9 +36,14 @@ int Rect(int x, int y) {
 int main() {
     cin >> n >> m;
 
+    bool flag=false;
     for(int i=0; i<n; i++) {
         for(int j=0; j<m; j++) {
             cin >> arr[i][j];
+
+            if(arr[i][j] > 0){
+                flag=true;
+            }
         }
     }
 
@@ -49,6 +54,9 @@ int main() {
         }
     }
 
+    if (!flag) {
+        mS = -1;
+    }
     cout << mS;
     return 0;
 }
