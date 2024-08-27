@@ -8,21 +8,17 @@ int row (int n) {
     int num=0, cnt=1;
 
     for (int i=0; i<n; i++) {
-        for (int j=1; j<n; j++) {
-            if (arr[i][j] == arr[i][j-1]) {
+        for (int j=0; j<n-1; j++) {
+            if (arr[i][j] == arr[i][j+1]) {
                 cnt++;
-            } else {
-                cnt = 1;
-            }
-
-            if (cnt >= m) {
-                num ++;
-                cnt = 1;
-                break;
             }
         }
-    }
 
+        if (cnt >= m) {
+            num ++;
+            cnt = 1;
+        }
+    }
     return num;
 }
 
@@ -30,21 +26,17 @@ int column(int n) {
     int num=0, cnt=1;
 
     for (int i=0; i<n; i++) {
-        for (int j=1; j<n; j++) {
-            if (arr[j][i] == arr[j-1][i]) {
+        for (int j=0; j<n-1; j++) {
+            if (arr[j][i] == arr[j+1][i]) {
                 cnt++;
-            } else {
-                cnt = 1;
-            }
-
-            if (cnt >= m) {
-                num ++;
-                cnt = 1;
-                break;
             }
         }
+
+        if (cnt >= m) {
+            num ++;
+            cnt = 1;
+        }
     }
-    
     return num;
 }
 
