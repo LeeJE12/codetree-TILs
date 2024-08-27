@@ -11,12 +11,15 @@ int row (int n) {
         for (int j=0; j<n-1; j++) {
             if (arr[i][j] == arr[i][j+1]) {
                 cnt++;
+            } else {
+                cnt = 1;
             }
-        }
 
-        if (cnt >= m) {
-            num ++;
-            cnt = 1;
+            if (cnt >= m) {
+                num ++;
+                //cout << "row count : " << num << " i : " << i << endl;
+                cnt = 1;
+            }
         }
     }
     return num;
@@ -29,12 +32,15 @@ int column(int n) {
         for (int j=0; j<n-1; j++) {
             if (arr[j][i] == arr[j+1][i]) {
                 cnt++;
+            } else {
+                cnt = 1;
             }
-        }
-
-        if (cnt >= m) {
-            num ++;
-            cnt = 1;
+        
+            if (cnt >= m) {
+                num ++;
+                //cout << "column count : " << num << " i : " << i << endl;
+                cnt = 1;
+            }
         }
     }
     return num;
@@ -50,8 +56,18 @@ int main() {
     }
 
     int num=0;
-    num+= row(n);
-    num+= column(n);
+
+    if (n!=1) {
+        num+= row(n);
+        num+= column(n);
+    } else {
+        if (m=0) {
+            num = 0;
+        } else {
+            num = 2;
+        }
+    }
+
 
     cout << num;
 
