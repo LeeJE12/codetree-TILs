@@ -4,16 +4,9 @@ using namespace std;
 int n, m;
 int arr[100][100];
 
-int main() {
-    cin >> n >> m;
-
-    for (int i=0; i<n; i++) {
-        for (int j=0; j<n; j++) {
-            cin >> arr[i][j];
-        }
-    }
-
+int row (int n) {
     int num=0, cnt=1;
+
     for (int i=0; i<n; i++) {
         for (int j=1; j<n; j++) {
             if (arr[i][j] == arr[i][j-1]) {
@@ -30,9 +23,15 @@ int main() {
         }
     }
 
-    for (int i=1; i<n; i++) {
-        for (int j=0; j<n; j++) {
-            if (arr[j][i] == arr[j][i-1]) {
+    return num;
+}
+
+int column(int n) {
+    int num=0, cnt=1;
+
+    for (int i=0; i<n; i++) {
+        for (int j=1; j<n; j++) {
+            if (arr[j][i] == arr[j-1][i]) {
                 cnt++;
             } else {
                 cnt = 1;
@@ -45,6 +44,22 @@ int main() {
             }
         }
     }
+    
+    return num;
+}
+
+int main() {
+    cin >> n >> m;
+
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<n; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    int num=0;
+    num+= row(n);
+    num+= column(n);
 
     cout << num;
 
